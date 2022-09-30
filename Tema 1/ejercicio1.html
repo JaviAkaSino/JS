@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <!--Como ejercicio se le propone crear un segundo botón para el ejemplo mostrado arriba que
+modifique el título “Modificando el contenido”.-->
+
+    <head>
+        <title id="titulo">Modificando el contenido</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+        <h1 id="cabecera">Modificando el código HTML</h1>
+        <p id="prueba">Modificando el contenido.</p>
+        <button type="button" onclick="document.getElementById('prueba').innerHTML=
+        'CAMBIANDO el contenido!'">
+            ¡Dale!
+        </button>
+
+        <button type="button" onclick="document.getElementById('titulo').innerHTML=
+        'El título ha sido modificado'">
+            Cambia título
+        </button>
+
+        <button type="button" onclick="document.getElementById('cabecera').innerHTML=
+        'La cabecera ha sido modificado'">
+            Cambia cabecera
+        </button>
+
+    </body>
+
+</html>

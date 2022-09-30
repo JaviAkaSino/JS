@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Orden alfabético - Javier Parodi</title>
+</head>
+
+<body>
+    <p>
+        Realiza un programa el cual reciba un texto determinado y muestre una
+        lista de las palabras introducidas de forma alfabética junto con el número
+        de veces que aparece esa palabra. Se obviará todo lo que no sea una palabra
+        como puntos, comas, etc.
+    </p>
+    <p id="respuesta"></p>
+
+    <script>
+
+        const eliminaDuplicados = (arr) => {
+            return arr.filter((valor, indice) => {
+                return arr.indexOf(valor) === indice;
+            });
+        }
+
+
+        let texto = "Realiza un programa el cual reciba un texto determinado y muestre una lista de las palabras introducidas de forma alfabética junto con el número de veces que aparece esa palabra. Se obviará todo lo que no sea una palabra como puntos, comas, etc."
+        let textoSinPuntuacion = "";
+
+        //Quitamos puntos y comas
+        textoSinPuntuacion = texto.replace(/\./g, "").replace(/,/g, "");
+
+        //Quita las mayúsculas para no alterar el orden alfabético con el ASCII
+        //Pasa a array con split, y ordena con sort
+        let array_texto = textoSinPuntuacion.toLowerCase().split(" ").sort();
+
+        let array_unicas = eliminaDuplicados(array_texto);
+
+        let numero_repeticiones = new Array(array_unicas.length);
+        numero_repeticiones.fill(0);
+
+        for (var i = 0; i < array_unicas.length; i++) {
+
+            for (var j = 0; j < array_texto.length; j++) {
+
+                if (array_unicas[i] == array_texto[j]) {
+
+                    numero_repeticiones[i] = numero_repeticiones[i] + 1;
+                }
+            }
+        }
+
+        for (let k = 0; k < array_unicas.length; k++) {
+
+            document.getElementById("respuesta").innerHTML += array_unicas[k] + " - " + numero_repeticiones[k] + "<br/>";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

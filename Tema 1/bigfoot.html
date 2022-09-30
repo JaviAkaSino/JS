@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BIG FOOT</title>
+</head>
+
+<body>
+    <p id="txt">
+        Pie Grande (del inglés Bigfoot) o Sasquatch (según el nombre que le
+        dan los pueblos indígenas
+        originarios de Norteamérica —que procede de la adaptación al inglés
+        de la palabra original
+        del idioma halkomelem sásq'ets) es una criatura legendaria con el
+        aspecto de un primate
+        perteneciente a la familia de los homínidos, que suele verse en
+        bosques a elevadas altitudes,
+        principalmente en la región del noroeste del Pacífico en América del
+        Norte.
+
+        <br><br>
+        Crea un programa con una función recursiva que diga cual es la
+        secuencia de Big foot's (sin la big) más largas para un array dado
+        Por ejemplo: <br><br>
+        foot -> tamaño 4<br>
+        foooot -> tamaño 6<br>
+        foooooot -> tamaño 8<br>
+    <p>
+        <script>
+            let arr =
+                ["O", "F", "O", "O", "S", "T", "O", "F", "O", "O", "O", "T", "O", "F", "O", "O", "O", "O", "O", "T"];
+            // ESCRIBE TU CÓDIGO AQUÍ
+
+            //Recorre en busca de F
+
+
+            let letraF = 0;
+            let letraT = 0;
+            let longitud = 0;
+            let longitudMax = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+
+                longitud = 0;
+
+                if (arr[i] == "F") { //Si la encuentra, mira la siguiente letra
+
+                    longitud = 1;
+                    console.log("coge una F en posicion " + i);
+
+                    for (let j = i + 1; j < arr.length; j++) {
+
+                        if (arr[j] == "O") {
+
+                            longitud++;
+                            console.log("coge una 0 en posicion " + j);
+
+                        } else if (arr[j] == "T") {
+
+                            longitud++;
+                            console.log("coge una T en posicion "+ j);
+                            break;
+
+                        } else {
+
+                            console.log("coge una letra en posicion " + j);
+                            break;
+                        }
+
+
+                    }
+
+                    console.log(longitud);
+                }
+
+
+                if (longitud > longitudMax) {
+                    longitudMax = longitud;
+                }
+
+                console.log(longitud);
+                console.log(longitudMax);
+
+            }
+
+            if (longitudMax > 3) {
+
+                console.log("La longitud max es " + longitudMax );
+
+            }
+
+        </script>
+</body>
+
+</html>

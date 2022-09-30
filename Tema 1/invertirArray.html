@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Invertir array - Javier Parodi</title>
+</head>
+
+<body>
+  <h1>Invertir un array</h1>
+
+  <script>
+    let texto = "Invertir un texto a través de array";
+    let longitud = texto.length;
+    let array = [];
+    let arrayInvertido = [];
+    let textoInvertido="";
+
+    //Pasa el string a array
+    for (let i = 0; i < longitud; i++) {
+      array.push(texto.substring(i, i + 1));
+      //console.log(array[i]);
+    }
+    //Invierte el array
+    for (let i = 0; i < longitud; i++) {
+      arrayInvertido.push(array.pop());
+      //console.log(arrayInvertido[i]);
+
+    }
+
+    //Pasa el array a string
+    for (let i = 0; i < longitud; i++) {
+      textoInvertido += arrayInvertido[i];
+
+    }
+
+    console.log("Texto original: " + texto);
+    console.log("Texto invertido: " + textoInvertido);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<!--Ejercicio 6 Modifique el código anterior para que los mensajes de bienvenida se generen con alertas.-->
+
+<head>
+    <title id="titulo">Mensaje de bienvenida</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+
+    <h1>Generar saludo</h1>
+
+    <button type="button" onclick="mensajeEsp()">
+        ESP
+    </button>
+
+    <button type="button" onclick="mensajeIng()">
+        ENG
+    </button>
+
+    <button type="button" onclick="mensajeRus()">
+        RUS
+    </button>
+
+    <p id="saludo"></p>
+
+    <script>
+
+        function mensajeEsp() {
+
+            window.alert("Hola mundo");
+        }
+
+        function mensajeIng() {
+
+            window.alert("Hello world");
+        }
+
+        function mensajeRus() {
+
+            window.alert("Privet, mir");
+        }
+
+
+    </script>
+
+</body>
+
+</html>

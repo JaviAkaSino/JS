@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<!--Ejercicio 2 Javier Parodi - Como ejercicio se le propone crear una secuencia de imágenes con al menos 4
+fotogramas. Según el usuario vaya haciendo clic sobre las imágenes la secuencia se irá reproduciendo.-->
+
+<head>
+    <title id="titulo">Cambio de imágenes</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+
+    <h1>Cambio de imágenes con JavaScript</h1>
+
+    <img id="imagen" onclick="sigImg()"
+        src="https://www.villauniversitaria.com/wp-content/uploads/2020/04/spring-276014_1920-1628x1221.jpg"
+        width="400px" height="300px" />
+
+    <p>Haz click en la imagen para cambiar de estación</p>
+
+    <script>
+
+        function sigImg() {
+
+            var image = document.getElementById('imagen');
+
+            if (image.src.match("villa")) {
+
+                image.src = "https://fotografias.lasexta.com/clipping/cmsimages02/2019/04/12/A58E725C-5404-40FE-8775-DA2911DE98AB/95.jpg?crop=5184,2915,x0,y0&width=1028&height=578&optimize=high&format=webply";
+
+            } else if (image.src.match("lasexta")) {
+
+                image.src = "https://www.ngenespanol.com/wp-content/uploads/2018/08/%C2%BFPor-qu%C3%A9-oto%C3%B1o-es-rojo-en-Am%C3%A9rica-y-amarillo-en-Europa.jpg";
+
+            } else if (image.src.match("ngenespanol")) {
+
+                image.src = "https://www.meteorologiaenred.com/wp-content/uploads/2015/12/estaci%C3%B3n-invierno-830x551.jpg";
+
+            } else {
+
+                image.src = "https://www.villauniversitaria.com/wp-content/uploads/2020/04/spring-276014_1920-1628x1221.jpg";
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

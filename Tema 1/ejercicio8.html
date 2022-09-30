@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<!--Ejercicio 8 Modifique el código anterior para que los mensajes de bienvenida se generen con el
+método write().-->
+
+<head>
+    <title id="titulo">Mensaje de bienvenida</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+
+    <h1>Generar saludo</h1>
+
+    <button type="button" onclick="mensajeEsp()">
+        ESP
+    </button>
+
+    <button type="button" onclick="mensajeIng()">
+        ENG
+    </button>
+
+    <button type="button" onclick="mensajeRus()">
+        RUS
+    </button>
+
+    <p id="saludo"></p>
+
+    <script>
+
+        function mensajeEsp() {
+
+            document.write("<p>Hola mundo</p>")
+        }
+
+        function mensajeIng() {
+
+            document.write("<p>Hello world</p>")
+        }
+
+        function mensajeRus() {
+
+            document.write("Privet, mir");
+        }
+
+
+    </script>
+
+</body>
+
+</html>

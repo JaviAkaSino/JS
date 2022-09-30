@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Javier Parodi - 3 arrays ordenados</title>
+</head>
+
+<body>
+    <h2>JavaScript Arrays. 3 arrays ordenados.</h2>
+    <p> Tenemos dos arrays arr1 y arr2 y queremos insertarlos de forma
+        ordenada en un tercer array arr3.
+        Importante:
+        *Hay que insertarlo de forma ordenada en un tercer array.
+        *Solo puedes utilizar el método de arrays push() y length().
+        *No puedes modificar los arrays arr1 ni arr2.
+        **No puedes crear copias de los arrays
+        *No puedes crear más variables que las que se te dan.
+        *Muestra el resultado (arr3) en el campo demo.
+        *Tu programa deberá funcionar para dos arrays ordenados de cualquier
+        tamaño.
+        *Los números se pueden repetir siempre que estén ordenados.
+    </p>
+    <p id="demo"></p>
+    <script>
+        var arr1 = [1, 4, 6, 8, 9, 15, 50];
+        var arr2 = [1,2,2, 5, 7, 9, 15, 19];
+        var arr3 = [4, 9, 9, 9, 9, 9, 11, 12, 15, 21, 22];
+        var arr4 = [];
+        let i = 0;
+        let j = 0;
+        let k = 0;
+        /*
+        COMPLETA EL CÓDIGO EN ESTA SECCIÓN DEL PROGRAMA.
+        */
+
+        //Cuando ninguna cadena este vacia
+        while (i < arr1.length && j < arr2.length && k < arr3.length) {
+
+
+            if (arr1[i] <= arr2[j] && arr1[i] <= arr3[k]) {
+                console.log(arr1[i]);
+                arr4.push(arr1[i]);
+                i++;
+
+
+            } else if (arr2[j] <= arr1[i] && arr2[j] <= arr3[k]) {
+                console.log(arr2[j]);
+                arr4.push(arr2[j]);
+                j++;
+
+            } else {
+
+                console.log(arr3[k]);
+                arr4.push(arr3[k]);
+                k++;
+            }
+
+        }
+
+        if (i == arr1.length) { //Si arr1 está vacia
+
+            while (j < arr2.length && k < arr3.length) {
+
+
+                if (arr2[j] < arr3[k]) {
+                    console.log(arr2[j]);
+                    arr4.push(arr2[j]);
+                    j++;
+
+
+                } else {
+                    console.log(arr3[k]);
+                    arr4.push(arr3[k]);
+                    k++;
+
+                }
+
+            }
+
+        } else if (j == arr2.length) { //Si arr2 esta vacia
+
+            while (i < arr1.length && k < arr3.length) {
+
+
+                if (arr1[i] < arr2[j]) {
+                    console.log(arr1[i]);
+                    arr3.push(arr1[i]);
+                    i++;
+
+
+                } else {
+                    console.log(arr3[k]);
+                    arr4.push(arr3[k]);
+                    k++;
+
+                }
+            }
+
+
+        } else { //Si arr3 está vacia
+
+            while (i < arr1.length && j < arr2.length) {
+
+
+                if (arr1[i] < arr2[j]) {
+                    console.log(arr1[i]);
+                    arr4.push(arr1[i]);
+                    i++;
+
+
+                } else {
+                    console.log(arr2[j]);
+                    arr4.push(arr2[j]);
+                    j++;
+
+                }
+
+
+            }
+
+        }
+
+
+        for (i; i < arr1.length; i++) {
+
+            console.log(arr1[i]);
+            arr4.push(arr1[i]);
+        }
+
+        for (j; j < arr2.length; j++) {
+            console.log(arr2[j]);
+            arr4.push(arr2[j]);
+
+        }
+
+        for (k; k < arr3.length; k++) {
+            console.log(arr3[k]);
+            arr4.push(arr3[k]);
+
+        }
+
+
+
+        document.getElementById("demo").innerHTML = arr4;
+
+    </script>
+</body>
+
+</html>

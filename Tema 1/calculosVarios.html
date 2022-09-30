@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Funciones con parámetros - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>Funciones con parámetros</h1>
+    <script>
+        function calculosVarios(a, b, c) {
+
+            if (b == undefined && c == undefined) {
+                return a * a;
+            } else if (c == undefined) {
+                return a * b;
+            } else {
+                return a + b + c;
+            }
+
+        }
+
+        console.log(calculosVarios(5));
+
+        console.log(calculosVarios(5, 4));
+
+        console.log(calculosVarios(5, 4, 3));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del OSO - Javier Parodi</title>
+</head>
+
+<body>
+    <script>
+
+        const LADO = 8;
+
+        aleatorio = (min, max) => {
+
+            let horquilla = max - min;
+
+            return Math.round(Math.random() * horquilla + min);
+        }
+
+        tablero = (lado) => {
+
+            let matriz=[];
+
+            for (let i = 0; i < lado; i++) {
+
+                matriz.push(new Array(lado));
+            }
+
+            aleatorio(0,lado)
+
+
+
+
+
+            return matriz;
+        }
+
+        console.log(tablero(LADO));
+
+    </script>
+</body>
+
+</html>

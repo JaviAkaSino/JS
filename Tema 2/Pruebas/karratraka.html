@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Secuencia de Karratraka - Javier Parodi</title>
+</head>
+
+<body>
+    <script>
+        //Suma de los dos anteriores + 1
+
+        function karratraka(lon) {
+            let secuencia = [];
+            let base = [1, 1];
+            let i = 0;
+
+            for (let i = 2; i <= lon; i++) {
+
+                base.push(base[i-2] + base[i -1] + 1);
+
+
+            }
+            base.shift();
+
+            return base;
+        }
+
+        console.log(karratraka(2));
+
+    </script>
+</body>
+
+</html>

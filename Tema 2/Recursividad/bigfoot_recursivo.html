@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BIG FOOT recursivo - Javier Parodi</title>
+</head>
+
+<body>
+    <p id="txt">
+        Pie Grande (del inglés Bigfoot) o Sasquatch (según el nombre que le
+        dan los pueblos indígenas
+        originarios de Norteamérica —que procede de la adaptación al inglés
+        de la palabra original
+        del idioma halkomelem sásq'ets) es una criatura legendaria con el
+        aspecto de un primate
+        perteneciente a la familia de los homínidos, que suele verse en
+        bosques a elevadas altitudes,
+        principalmente en la región del noroeste del Pacífico en América del
+        Norte.
+
+        <br><br>
+        Crea un programa con una función recursiva que diga cual es la
+        secuencia de Big foot's (sin la big) más largas para un array dado
+        Por ejemplo: <br><br>
+        foot -> tamaño 4<br>
+        foooot -> tamaño 6<br>
+        foooooot -> tamaño 8<br>
+    <p>
+        <script>
+            let arr = ["O", "F", "O", "O", "S", "T", "O", "F", "O", "O", "O", "T", "O", "F", "O", "O", "O", "O", "O", "T"];
+
+            function buscaFoot(longitud, arr) {
+
+                if (longitud == 3) return 0; //Foot mínimo 4
+
+                for (let i = 0; i < arr.length - longitud + 1; i++) {
+
+                    let corte = arr.slice(i, i + longitud); //Corta trozos
+                    let foot = false;
+
+                    //La primera letra tiene que ser una F y la última una T
+                    if (corte[0] == "F" && corte[longitud - 1] == "T") {
+
+                        foot = true;
+
+                        //Recorre la parte central 
+                        for (let j = 1; j < longitud - 1; j++) {
+
+                            if (corte[j] != "O") { //Si alguna letra no es O, false
+
+                                foot = false;
+                            }
+                        }
+                    }
+                    //console.log(corte);
+
+                    //Si cumple todas las condiciones
+                    if (foot) {
+
+                        return longitud;
+                    }
+
+                }
+                //Si no, llamada recursiva, busca uno más pequeño
+                return (buscaFoot(longitud - 1, arr))
+            }
+
+            console.log("EL foot más largo es de " + buscaFoot(arr.length, arr) + " letras.")
+
+        </script>
+</body>
+
+</html>

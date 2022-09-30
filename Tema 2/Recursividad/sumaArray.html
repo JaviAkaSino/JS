@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Suma array recursiva - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>Suma de los valores de un array de forma recursiva</h1>
+    <script>
+
+        let array = [1, 2, 3, 4, 5];
+
+        function sumaArray(array, longitud) {
+
+            let suma = 0;
+
+            if (longitud == 0) return 0;
+
+            return (array[longitud - 1] + sumaArray(array, longitud - 1));
+        }
+
+        console.log(sumaArray(array, array.length));
+
+    </script>
+</body>
+
+</html>

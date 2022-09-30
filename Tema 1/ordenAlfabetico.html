@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Realiza un programa el cual reciba un texto determinado y muestre una
+        lista de las palabras introducidas de forma alfabética junto con el número
+        de veces que aparece esa palabra. Se obviará todo lo que no sea una palabra
+        como puntos, comas, etc.
+    </p>
+
+    <script>
+        let texto = "Realiza un programa el cual reciba un texto determinado y muestre una lista de las palabras introducidas de forma alfabética junto con el número de veces que aparece esa palabra. Se obviará todo lo que no sea una palabra como puntos, comas, etc."
+        let textoSinPuntuacion="";
+
+        //Quitamos puntos y comas
+        textoSinPuntuacion=texto.replace(/\./g,"").replace(/,/g,"");
+        console.log(textoSinPuntuacion);
+
+        //Quita las mayúsculas para no alterar el orden alfabético con el ASCII
+        //Pasa a array con split, y ordena con sort
+        let array = textoSinPuntuacion.toLowerCase().split(" ").sort();
+        
+        array.forEach(element => {
+            console.log(element);
+        });
+    </script>
+</body>
+
+</html>
