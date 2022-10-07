@@ -18,25 +18,100 @@
             return Math.round(Math.random() * horquilla + min);
         }
 
-        tablero = (lado) => {
+        crear_matriz = (lado) => {
 
-            let matriz=[];
+            let matriz = [];
 
             for (let i = 0; i < lado; i++) {
 
                 matriz.push(new Array(lado));
             }
 
-            aleatorio(0,lado)
-
-
-
-
-
             return matriz;
         }
 
-        console.log(tablero(LADO));
+        rellenar_tablero = (matriz) => {
+
+
+            let numero_o = Math.ceil(matriz.length / 3 * 2); //Saca dos tercios al alza
+            let lado = matriz.length;
+
+            for (let i = 0; i < lado; i++) {
+
+                let restantes = numero_o;
+
+                while (restantes != 0) { //Hasta que no queden O por poner
+
+                    let posicion_aleatoria = aleatorio(0, lado - 1); //Posición aleatoria en la fila
+
+                    if (matriz[i][posicion_aleatoria] == undefined) { //Si está vacío
+
+                        matriz[i][posicion_aleatoria] = "O"; //Pone una O
+
+                        --restantes; //Resta uno al contador
+                    } //Si no, busca otra posición que sí esté vacía
+
+                }
+
+                for (let j = 0; j < lado; j++) { //Recorre la fila en busca de los huecos
+
+                    if (matriz[i][j] == undefined) { //Donde esté vacío
+
+                        matriz[i][j] = "S"; //Pone una S
+                    }
+                }
+            }
+        }
+
+
+        solitario = (matriz) => {
+
+            let lado = matriz.length;
+
+            for (let i = 0; i < lado; i++) {
+
+                for (let j = 0; j < lado; j++) { //Recorremos todo el array
+
+                    if (matriz[i][j] == "S") { //Cuando vea una S
+
+                        //Comprobamos las horizontales (controlando no salirnos de la matriz)
+                        if (j > 0 && j < lado - 1 && matriz[i][j - 1] == "O" && matriz[i][j + 1] == "O") {
+
+                            console.log("Horizontal: [" + (i) + "][" + (j - 1) + "] - [" + (i) + "][" + (j + 1) + "]");
+                        }
+
+                        //Comprobamos las verticales (controlando no salirnos de la matriz)
+                        if (i > 0 && i < lado - 1 && matriz[i - 1][j] == "O" && matriz[i + 1][j] == "O") {
+
+                            console.log("Vertical: [" + (i - 1) + "][" + j + "] - [" + (i + 1) + "][" + j + "]");
+
+                        }
+
+                        //Primera diagonal (controlando no salirnos de la matriz)
+                        if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j - 1] == "O" && matriz[i + 1][j + 1] == "O") {
+
+                            console.log("Diagonal: [" + (i - 1) + "][" + (j - 1) + "] - [" + (i + 1) + "][" + (j + 1) + "]");
+
+                        }
+
+                        //Segunda diagonal (controlando no salirnos de la matriz)
+                        if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j + 1] == "O" && matriz[i + 1][j - 1] == "O") {
+
+                            console.log("Diagonal: [" + (i - 1) + "][" + (j + 1) + "] - [" + (i + 1) + "][" + (j - 1) + "]");
+
+                        }
+                    }
+                }
+            }
+        }
+
+        let tablero = crear_matriz(LADO); //Crea el tablero
+
+        rellenar_tablero(tablero); //Lo rellena
+
+        console.log(tablero); //Lo imprime en consola
+
+        solitario(tablero); //Lo juega
 
     </script>
 </body>
