@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+    <p id="demo"></p>
     <script>
 
         const LADO = 8;
@@ -70,34 +72,34 @@
 
             for (let i = 0; i < lado; i++) {
 
-                for (let j = 0; j < lado; j++) { //Recorremos todo el array
+                for (let j = 0; j < lado; j++) { //Recorremos toda la matriz
 
                     if (matriz[i][j] == "S") { //Cuando vea una S
 
                         //Comprobamos las horizontales (controlando no salirnos de la matriz)
                         if (j > 0 && j < lado - 1 && matriz[i][j - 1] == "O" && matriz[i][j + 1] == "O") {
 
-                            console.log("Horizontal: [" + (i) + "][" + (j - 1) + "] - [" + (i) + "][" + (j + 1) + "]");
+                            document.getElementById("demo").innerHTML += ("Horizontal: [" + (i) + "][" + (j - 1) + "] - [" + (i) + "][" + (j + 1) + "]<br/>");
                         }
 
                         //Comprobamos las verticales (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && matriz[i - 1][j] == "O" && matriz[i + 1][j] == "O") {
 
-                            console.log("Vertical: [" + (i - 1) + "][" + j + "] - [" + (i + 1) + "][" + j + "]");
+                            document.getElementById("demo").innerHTML += ("Vertical: [" + (i - 1) + "][" + j + "] - [" + (i + 1) + "][" + j + "]<br/>");
 
                         }
 
                         //Primera diagonal (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j - 1] == "O" && matriz[i + 1][j + 1] == "O") {
 
-                            console.log("Diagonal: [" + (i - 1) + "][" + (j - 1) + "] - [" + (i + 1) + "][" + (j + 1) + "]");
+                            document.getElementById("demo").innerHTML += ("Diagonal: [" + (i - 1) + "][" + (j - 1) + "] - [" + (i + 1) + "][" + (j + 1) + "]<br/>");
 
                         }
 
                         //Segunda diagonal (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j + 1] == "O" && matriz[i + 1][j - 1] == "O") {
 
-                            console.log("Diagonal: [" + (i - 1) + "][" + (j + 1) + "] - [" + (i + 1) + "][" + (j - 1) + "]");
+                            document.getElementById("demo").innerHTML += ("Diagonal: [" + (i - 1) + "][" + (j + 1) + "] - [" + (i + 1) + "][" + (j - 1) + "]<br/>");
 
                         }
                     }
@@ -105,13 +107,32 @@
             }
         }
 
+        imprimir_matriz = (matriz, ubi) => {
+
+            for (let i = 0; i < matriz.length; i++) {
+
+                for (let j = 0; j < matriz.length; j++) {
+
+                    document.getElementById(ubi).innerHTML += (matriz[i][j] + "&nbsp");
+                }
+
+                document.getElementById(ubi).innerHTML += "<br/>";
+            }
+
+        }
+
         let tablero = crear_matriz(LADO); //Crea el tablero
 
         rellenar_tablero(tablero); //Lo rellena
 
-        console.log(tablero); //Lo imprime en consola
+        //console.log(tablero);
+        document.getElementById("demo").innerHTML += "Tablero: <br/><br/>";
+        imprimir_matriz(tablero, "demo");
 
+        document.getElementById("demo").innerHTML += "<br/><br/>OSO's: <br/>";
         solitario(tablero); //Lo juega
+
+
 
     </script>
 </body>
