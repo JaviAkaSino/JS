@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>BOMBASSO</h2>
+    <p> Se pide que crees un programa que genere un campo de minas.
+        Las minas se colocan de forma aleatoria pero teniendo
+        en cuenta que no se deben colocar dos minas juntas.
+        realiza el programa para que genere 10, 20 o todas
+        las minas que se puedan instalar.
+    </p>
+    <p id="demo"></p>
+    <script>
+
+        var arr = [[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+        ];
+
+        const MINAS = 20;
+
+
+        function generateRandomInt(min, max) {
+            return Math.floor((Math.random() * (max - min)) + min);
+        }
+
+
+        vecinas_vacias = (matriz, fila_aleatoria, columna_aleatoria) => {
+
+            let vacias = true;
+            //Recorre una posicion antes y una despues en fila
+            for (let i = fila_aleatoria - 1; i <= fila_aleatoria + 1; i++) {
+                //Lo mismo en columna
+                for (let j = columna_aleatoria - 1; j <= columna_aleatoria + 1; j++) {
+                    //Descarta la posición de la casilla en sí
+                    if (!(i == fila_aleatoria && j == columna_aleatoria)) {
+                        //Controla no salirse de la matriz
+                        if (i >= 0 && i < matriz.length && j >= 0 && j < matriz[0].length) {
+                            //Si alguna de las posiciones no está vacía o espacio
+                            if (matriz[i][j] != " " && matriz[i][j] != "") {
+
+                                vacias = false; //Devuelve false
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return vacias;
+        }
+
+
+
+        rellenar_buscaminas = (matriz, minas) => {
+
+            let filas = matriz.length;
+            let columnas = matriz[0].length;
+            //Contador para frenar el bucle en 100 vueltas en caso de  no caber mas minas
+            let contador = 100; 
+
+            while (minas != 0 && contador != 0) { //Hasta que no queden minas por poner
+
+                let fila_aleatoria = generateRandomInt(0, filas - 1);
+                let columna_aleatoria = generateRandomInt(0, columnas - 1);
+
+                //Si la posición está vacía y sus vecinas tambien
+                if (matriz[fila_aleatoria][columna_aleatoria] == " " && vecinas_vacias(matriz, fila_aleatoria, columna_aleatoria)) {
+
+                    //Añadimos mina
+                    matriz[fila_aleatoria][columna_aleatoria] = "*"
+
+
+                    --minas; //Resta uno al contador de minas
+                }
+
+                --contador; //Y al contador tope
+            }
+
+            //Ahora rellenamos con ^ para mejor visibilidad
+
+            for (let i = 0; i < matriz.length; i++) {
+
+                for (let j = 0; j < matriz[0].length; j++) {
+
+                    if (matriz[i][j] != "*") {
+                        matriz[i][j] = "^";
+                    }
+                }
+            }
+        }
+
+
+
+
+        imprimir_matriz = (matriz, ubi) => {
+
+            for (let i = 0; i < matriz.length; i++) {
+
+                for (let j = 0; j < matriz[0].length; j++) {
+
+                    document.getElementById(ubi).innerHTML += (matriz[i][j] + "&nbsp");
+                }
+
+                document.getElementById(ubi).innerHTML += "<br/>";
+            }
+        }
+
+        rellenar_buscaminas(arr, MINAS);
+
+        imprimir_matriz(arr, "demo");
+
+
+    </script>
+</body>
+
+</html>
