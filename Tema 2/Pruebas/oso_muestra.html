@@ -7,11 +7,8 @@
 </head>
 
 <body>
-    <h3>Tablero: </h3>
-    <p id="completo"></p>
 
-    <h3>Tablero jugado: </h3>
-    <p id="jugado"></p>
+    <p id="demo"></p>
     <script>
 
         const LADO = 8;
@@ -82,35 +79,27 @@
                         //Comprobamos las horizontales (controlando no salirnos de la matriz)
                         if (j > 0 && j < lado - 1 && matriz[i][j - 1] == "O" && matriz[i][j + 1] == "O") {
 
-                            matriz[i][j - 1] = "X";
-                            matriz[i][j] = "X";
-                            matriz[i][j + 1] = "X";
+                            document.getElementById("demo").innerHTML += ("Horizontal: [" + (i) + "][" + (j - 1) + "] - [" + (i) + "][" + (j + 1) + "]<br/>");
                         }
 
                         //Comprobamos las verticales (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && matriz[i - 1][j] == "O" && matriz[i + 1][j] == "O") {
 
-                            matriz[i - 1][j] = "X";
-                            matriz[i][j] = "X";
-                            matriz[i + 1][j] = "X";
+                            document.getElementById("demo").innerHTML += ("Vertical: [" + (i - 1) + "][" + j + "] - [" + (i + 1) + "][" + j + "]<br/>");
 
                         }
 
                         //Primera diagonal (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j - 1] == "O" && matriz[i + 1][j + 1] == "O") {
 
-                            matriz[i - 1][j - 1] = "X";
-                            matriz[i][j] = "X";
-                            matriz[i + 1][j + 1] = "X";
+                            document.getElementById("demo").innerHTML += ("Diagonal: [" + (i - 1) + "][" + (j - 1) + "] - [" + (i + 1) + "][" + (j + 1) + "]<br/>");
 
                         }
 
                         //Segunda diagonal (controlando no salirnos de la matriz)
                         if (i > 0 && i < lado - 1 && j > 0 && j < lado - 1 && matriz[i - 1][j + 1] == "O" && matriz[i + 1][j - 1] == "O") {
 
-                            matriz[i - 1][j + 1] = "X";
-                            matriz[i][j] = "X";
-                            matriz[i + 1][j - 1] = "X";
+                            document.getElementById("demo").innerHTML += ("Diagonal: [" + (i - 1) + "][" + (j + 1) + "] - [" + (i + 1) + "][" + (j - 1) + "]<br/>");
 
                         }
                     }
@@ -129,17 +118,19 @@
 
                 document.getElementById(ubi).innerHTML += "<br/>";
             }
+
         }
 
         let tablero = crear_matriz(LADO); //Crea el tablero
 
         rellenar_tablero(tablero); //Lo rellena
 
-        imprimir_matriz(tablero, "completo");//Lo imprime
+        //console.log(tablero);
+        document.getElementById("demo").innerHTML += "<strong>Tablero:</strong><br/><br/>";
+        imprimir_matriz(tablero, "demo");
 
+        document.getElementById("demo").innerHTML += "<br/><br/><strong>OSO's:</strong><br/><br/>";
         solitario(tablero); //Lo juega
-
-        imprimir_matriz(tablero, "jugado"); //Lo vuelve a imprimir
 
 
 
