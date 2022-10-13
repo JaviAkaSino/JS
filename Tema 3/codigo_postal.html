@@ -2,16 +2,30 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Document</title>
 </head>
 
 <body>
     <div id="nombre"></div>
+
+    <form method="post">
+
+        <input type="text" id="entrada" name="entrada" />
+
+        <button onclick="pulsar()">Ejecutar</button>
+    </form>
+
+
     <script>
 
-        let bigarray = [{ 29680: "Estepona" }];
-        console.log(bigarray);
+        let bigarray = [{ 29680: "Estepona" }, { 29601: "Marbella" }];
+
+        function pulsar() {
+
+            document.getElementById("nombre").innerHTML = bigarray.map((v) => console.log(v));
+
+        }
     </script>
 </body>
 
