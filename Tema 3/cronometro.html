@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cronómetro</title>
+</head>
+
+<body>
+    <div id="laHora"></div>
+    <script>
+        function crono() {
+            var crono
+            var fecha = new Date();
+            var horas = fecha.getHours();
+            var minutos = fecha.getMinutes();
+            var segundos = fecha.getSeconds();
+
+            var texto = document.getElementById("laHora");
+            texto.innerHTML = horas + ":" + minutos + ":" + segundos;
+
+        }
+        window.onload = function () {
+
+            crono = setInterval(crono, 1000);
+        }
+    </script>
+</body>
+
+</html>
