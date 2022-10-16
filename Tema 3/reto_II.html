@@ -7,26 +7,65 @@
 </head>
 
 <body>
-    <h1>retos JavaScript</h1>
+    <h1>Retos JavaScript</h1>
     <script>
         var cars = ["Saab", "Volvo", "BMW", ["Honda", "Toyota", ["Lexus", "Mercedes", "Lada"], "Hyunday"]];
         var carrakos = ["Chevrolet", "Tesla", "BMW", ["Honda", "Infiniti", ["Lexus", "Mercedes", "Kia"], "Hyunday"], ["Mazda", "Mercedes", "Jeep", ["KTM", "Nissan", "Isuzu"]]];
+
+        cars = cars.flat(2); //Aplanamos arrays
+        carrakos = carrakos.flat(2); //Aplanamos arrays
+
         //Alguien sabe hacer una lista única de coches con los dos arrays (sin repeticiones)?
+
+        var coches = [];
+        cars.map((v) => { if (!coches.includes(v)) return coches.push(v); });
+        carrakos.map((v) => { if (!coches.includes(v)) return coches.push(v); });
+
+        console.log("Lista de coches con los dos arrays");
+        console.log(coches);
 
         //Alguien sabría decirme los coches de carrakos que no estén en cars?
 
+        var no_en_cars = [];
+
+        carrakos.map((v) => { if (!cars.includes(v)) return no_en_cars.push(v); });
+
+        console.log("Coches de carrakos que no están en cars");
+        console.log(no_en_cars);
+
+
+        //SEGUNDA PARTE
+
+
         var cars = ["Saab", "Volvo", "BMW", ["Honda", "Toyota", ["Lexus", "Mercedes", "Lada"], "Hyunday"]];
-        var buddies = [{ firstName: "Chuck", lastName: "Norris", car: "Honda" }, { firstName: "Yakie", lastName: "Chang", car: "BMV" }, { firstName: "Bruce", lastName: "Lee", car: "Honda" }, { firstName: "Steven", lastName: "Seagal", car: "Lada" }];
-//-Nombre y apellidos de los buddies que usan un Honda
+        cars = cars.flat(2);
+        var buddies = [{ firstName: "Chuck", lastName: "Norris", car: "Honda" }, { firstName: "Yakie", lastName: "Chang", car: "BMW" }, { firstName: "Bruce", lastName: "Lee", car: "Honda" }, { firstName: "Steven", lastName: "Seagal", car: "Lada" }];
+        
+        //-Nombre y apellidos de los buddies que usan un Honda
+        console.log("Buddies que usan Honda");
+        var usan_honda = [];
+        buddies.map((v)=>{if(v.car=="Honda") return(usan_honda.push({firstName: v.firstName, lastName: v.lastName}));});
+        console.log(usan_honda);
 
-//-Marcas utilizadas por los buddies
+        //-Marcas utilizadas por los buddies
+        console.log("Marcas utilizadas por los buddies");
+        var marcas_usadas = []
+        buddies.map((v)=>{if(!marcas_usadas.includes(v.car)) return(marcas_usadas.push(v.car));});
+        console.log(marcas_usadas);
 
-//-Marcas no utilizadas por los buddies.
+        //-Marcas no utilizadas por los buddies.
+        console.log("Marcas NO utilizadas por los buddies");
+        var no_usadas = [];
+        cars.map((v)=>{if(!marcas_usadas.includes(v) ) return(no_usadas.push(v));});
+        console.log(no_usadas);
 
-//-Cuantas marcas han sido utilizadas
+        //-Cuantas marcas han sido utilizadas
+        console.log("Cuántas marcas han sido utilizadas por los buddies");
+        console.log(marcas_usadas.length);
 
-//-Cuantas marcas no han sido utilizadas
-
+        //-Cuantas marcas no han sido utilizadas
+        console.log("Cuántas marcas NO han sido utilizadas por los buddies");
+        console.log(no_usadas.length);
 
     </script>
 </body>
