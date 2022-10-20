@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exámen Find, Map, Filter - Javier Parodi </title>
+</head>
+
+<body>
+    <h1>Exámen Find, Map, Filter</h1>
+    <script>
+        var cars = ["Saab", "Volvo", "BMW", ["Honda", "Toyota", ["Lexus",
+            "Mercedes", "Lada"], "Hyunday"]];
+        var carrakos = ["Chevrolet", "Tesla", "BMW", ["Honda",
+            "Infiniti", ["Lexus", "Mercedes", "Kia"], "Hyunday"], ["Mazda",
+                "Mercedes", "Jeep", ["KTM", "Nissan", "Isuzu"]]];
+        var newcars = ["Saab", "Volvo", "BMW", ["Honda", "Toyota", ["Lexus",
+            "Volvo", "Lada"], "Hyunday", "Volvo"]];
+        buddies = [{
+            firstName: "Jonny", lastName: "Rambo",
+            car: "BMW"
+        }, {
+            firstName: "Arnold", lastName: "Suarchenager",
+            car: "Honda"
+        }, {
+            firstName: "Chuck", lastName: "Norris",
+            car: "Honda"
+        }, {
+            firstName: "Yakie", lastName: "Chang",
+            car: "BMW"
+        }, {
+            firstName: "Bruce", lastName: "Lee",
+            car: "Honda"
+        }, { firstName: "Steven", lastName: "Seagal", car: "Lada" }];
+
+        let xungas = ["Honda", "Lada"]
+        //EJERCICIO 1 
+        /*¿Cuántas veces aparece la palabra Volvo en newcars en una línea?*/
+        console.log(newcars.flat(Infinity).filter(e => e == "Volvo").length);
+
+        //EJERCICIO 2
+        /*Ver si una marca es trendy. Una marca es trendy si esta es utilizada por más de
+        un buddy. Crea en este mismo ejercicio un array trendy con dichas marcas. Muestra el array
+        trendy por consola. Se pide que lo realices en 3-4 líneas de código.*/
+        var trendy = [];
+        let coches = buddies.map(e => {
+            let objeto = new Object();
+            objeto.marca = e.car;
+            objeto.veces = buddies.filter(v => v.car == e.car).length; //buddies.map(v => v.car).filter(v => v == objeto.marca).length;
+            return objeto;
+        });
+        //console.log(coches);
+        coches = coches.filter(e => e.veces > 1).map(v => {
+
+            if (trendy.find(f => f == v.marca) == undefined)
+                trendy.push(v.marca);
+
+        });
+
+        console.log(trendy);
+
+        //EJERCICIO 2-B
+        var trendy = [];
+        buddies.map(e => {
+            let veces = buddies.filter(v => v.car == e.car).length;
+            if (veces > 1 && trendy.find(f => f == e.car) == undefined)
+                trendy.push(e.car);
+        });
+        
+        console.log(trendy);
+
+        //EJERCICIO 3
+        /*Muestra por consola las marcas del array newcars que usen los buddies, que
+        están obviamente en newcars pero que no estén en el array xungas. Muestra el resultado
+        por consola. Puede aparecer alguna marca repetida (no importa). Realiza este programa en
+        una línea de código.*/
+        var newcars_buddies = [];
+        newcars = newcars.flat(Infinity);
+        console.log(newcars);
+        var coches_buddies = buddies.map(b => b.car);
+
+        
+        console.log(newcars_buddies);
+
+        //EJERCICIO 4
+        /*Se quiere conocer la marca más trendy de todas usada por los buddies (la más
+        preferida). Realiza este programa en 2 líneas de código.*/
+
+    </script>
+</body>
+
+</html>
