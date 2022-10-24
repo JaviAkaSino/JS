@@ -53,7 +53,7 @@
         var suma = 0;
         var media = 0;
         
-        valumnos.alumnos.filter(a => {
+        valumnos.alumnos.map(a => {
             suma += a.notas.DWEC
             media = suma/valumnos.alumnos.length;
         });
