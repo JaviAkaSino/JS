@@ -92,9 +92,10 @@
         let maximo = 0;
         let marca="";
         buddies.map(b => {
-            if (buddies.filter(x => x.car == b.car).length > maximo){
+            let veces = buddies.filter(x => x.car == b.car).length;
+            if (veces > maximo){
                 marca = b.car;
-                maximo = buddies.filter(x => x.car == b.car).length;
+                maximo = veces;
             }
         })
         console.log(marca);

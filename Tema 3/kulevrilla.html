@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <body>
+        <h2>Kulevrilla Zostérica</h2>
+        <script>
+            var arr = [[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", "*", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+            ];
+
+            /*function cabeza(matriz) {
+                let posicion = [];
+                matriz.map(x => x.map(y => {
+                    console.log(matriz[x][y]);
+                    if (matriz[x][y] == "*") {
+
+                        posicion[0] = x;
+                        posicion[1] = y;
+                    }
+                }))
+                return posicion;
+            }*/
+
+            function generateRandomInt(min, max) {
+                return Math.floor((Math.random() * (max - min)) + min);
+            }
+
+            function vecinas_vacias(matriz, x, y){
+
+                
+            }
+            function juego(matriz, x, y) {
+
+                n = generateRandomInt(0, 3);
+                switch (n) {
+                    case 0:
+                        if (x >= 1 && matriz[x - 1][y]!="*" && ) {
+                            matriz[x - 1][y] = "*";
+                            juego(matriz, [x - 1], [y]);
+                        }
+
+                        break;
+
+                    case 1: arguments
+
+                        break;
+
+                    case 2: arguments
+
+                        break;
+
+                    default: arguments
+
+                        break;
+                }
+
+            }
+            juego(arr, 4, 6);
+            console.table(arr);
+            //console.log(cabeza(arr));
+        </script>
+    </body>
+
+    </html>
