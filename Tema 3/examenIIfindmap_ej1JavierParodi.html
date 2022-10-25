@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Examen II Find map Filter - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>retos JavaScript</h1>
+    <script>
+        console.log("Ejercicio 1")
+        let iberospoblacion =
+            [{ pueblo: "Marmolejo", poblacion: 55 }, { pueblo: "Bujalance", poblacion: 50 },
+            { pueblo: "Arjona", poblacion: 10 },
+            { pueblo: "Arjonilla", poblacion: 20 }, { pueblo: "Porcuna", poblacion: 25 }];
+        let pueblos =
+            ["Bujalance", "Marmolejo", "Marmolejo", "Alharilla", "Obulco", "Lopera",
+                "Arjona", "Arjonilla", "Porcuna"];
+        let iberos = ["Bujalance", "Arjona", "Arjonilla", "Porcuna"];
+
+
+
+        //EJERCICIO
+        console.log("Nombre de las pueblos iberos con un población mayor de veintiuno:");
+        iberospoblacion.filter(p => {
+            iberos.map(i => {
+                if (i == p.pueblo && p.poblacion > 21)
+                    console.log(p.pueblo);
+            })
+
+        })
+    </script>
+</body>
+
+</html>
