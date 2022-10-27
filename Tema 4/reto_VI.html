@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Retos VI - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>retos JavaScript</h1>
+    <ul id="frutas"> </ul>
+
+    <script>
+
+
+        let frutas = ["aguacate", "pera", "manzana", "naranja", "tomate", "granada", "mango", "litchi", "nispero"];
+        // muestra las frutas como elementos li y su nodo padre será el ul frutas
+
+        var lista = document.getElementById("frutas");
+
+        frutas.map(f => {
+            var vineta = document.createElement("li");
+            var contenido = document.createTextNode(f);
+            vineta.appendChild(contenido);
+            lista.appendChild(vineta);
+        })
+    </script>
+</body>
+
+</html>
