@@ -2,29 +2,30 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Reto 0 - Javier Parodi</title>
 </head>
 
 <body>
-    <div id="nombre"></div>
+    <p id="resultado"></p>
 
-    <form method="post" action="codigo_postal.html">
-
-        <input type="text" id="entrada" name="entrada"/>
+        <input type="text" id="entrada" name="entrada" value="ESTE" />
 
         <button onclick="pulsar()">Buscar</button>
-    </form>
-
-
+    
     <script>
 
-        let bigarray = [{29680:"Estepona"}, {29601:"Marbella"}];
+        let bigarray = [{ cp: 29680, ciudad: "Estepona" }, { cp: 29601, ciudad: "Marbella" }];
 
         function pulsar() {
 
-            document.getElementById("nombre").innerHTML = bigarray.map((v, i)=>i + v);
+            document.getElementById("resultado").innerHTML = "";
 
+            bigarray.map((dato) => {
+                let entrada = document.getElementById("entrada").value;
+                if (dato.ciudad.toUpperCase().includes(entrada.toUpperCase()))
+                    document.getElementById("resultado").innerHTML = dato.ciudad + " - " + dato.cp;
+            })
         }
 
     </script>

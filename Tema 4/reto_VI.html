@@ -1,12 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>retos JavaScript</title>
+    <meta charset="UTF-8">
+    <title>Retos VI - Javier Parodi</title>
 </head>
 
 <body>
-
-
     <h1>retos JavaScript</h1>
     <ul id="frutas"> </ul>
 
@@ -14,21 +14,17 @@
 
 
         let frutas = ["aguacate", "pera", "manzana", "naranja", "tomate", "granada", "mango", "litchi", "nispero"];
-        let tropicStock = [{ fruta: "aguacate", stock: 50 }, { fruta: "mango", stock: 10 }, { fruta: "litchi", stock: 20 }, { fruta: "nispero", stock: 25 }];
+        // muestra las frutas como elementos li y su nodo padre será el ul frutas
 
-        // muestra las frutas tropicales con stock menor a 40 como elementos li y su nodo padre será el ul frutas
         var lista = document.getElementById("frutas");
 
-        var filtradas = tropicStock.filter(ts => ts.stock < 40).map(ts => ts.fruta).filter(t => frutas.find(f => f == t) != undefined);
-        filtradas.map(f => {
+        frutas.map(f => {
             var vineta = document.createElement("li");
             var contenido = document.createTextNode(f);
             vineta.appendChild(contenido);
             lista.appendChild(vineta);
         })
-
     </script>
-
 </body>
 
 </html>
