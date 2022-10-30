@@ -43,13 +43,25 @@
             }
             ]
         };
-        var medias = [];
+
+        //Versión 3 líneas (más visible)
         let clase = valumnos.alumnos.map(v => v.notas);
-        console.log(clase.map((acc,c) =>{
+        var medias = clase.map(c => {
+            let arr_notas = Object.values(c);
+            let num_notas = arr_notas.length;
+            return (arr_notas.reduce((acc, c) => (acc + c)) / num_notas).toFixed(2);
+        });
+        console.log("Medias de los alumnos: " + medias);
 
-            return c.BBDD;
-        }));
+        //Versión 1 línea
 
+        valumnos.alumnos.map(v => v.notas).map(c => {
+            console.log((Object.values(c).reduce((acc, c) => (acc + c)) / Object.values(c).length).toFixed(2));
+        })
+
+        //Media de la clase (no sé si lo pide)
+
+        console.log(medias.reduce((acc, m) => parseFloat(acc) + parseFloat(m)) / medias.length);
 
     </script>
 </body>
