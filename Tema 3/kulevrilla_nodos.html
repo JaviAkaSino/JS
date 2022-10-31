@@ -4,10 +4,28 @@
 <head>
     <title>Kulevrilla - Javier Parodi</title>
     <meta charset="UTF-8">
+    <style>
+        table,
+        td {
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+
+        td {
+            width: 2.5rem;
+            height: 2.5rem;
+            text-align: center;
+            font-size: large;
+            font-weight: 900;
+            color: rgb(0, 187, 0);
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Kulevrilla Zostérica</h2>
+    <h1>Kulevrilla Zostérica</h1>
+
+    <table id="tablero"></table>
     <script>
         //Busca la cabeza antes de jugar
         function cabeza(matriz) {
@@ -124,6 +142,26 @@
             }
         }
 
+        function imprimir_tablero(matriz, id) {
+
+            var tablero = document.getElementById(id);
+
+            for (let i = 0; i < matriz.length; i++) {
+
+                var fila = document.createElement("tr");
+
+                for (let j = 0; j < matriz[0].length; j++) {
+
+                    var celda = document.createElement("td");
+                    var cont = document.createTextNode(matriz[i][j]);
+                    celda.appendChild(cont);
+                    fila.appendChild(celda);
+
+                }
+                tablero.appendChild(fila);
+            }
+
+        }
 
         var arr = [[" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
         [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
@@ -145,6 +183,8 @@
 
         juego(arr, empieza[0], empieza[1], probadas);
         console.table(arr);
+
+        imprimir_tablero(arr,"tablero");
 
 
     </script>
