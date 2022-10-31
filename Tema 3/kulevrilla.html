@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-<body>
     <!DOCTYPE html>
     <html>
-
+    <head>
+        <title>Kulevrilla - Javier Parodi</title>
+        <meta charset="UTF-8">  
+    </head>
     <body>
         <h2>Kulevrilla Zostérica</h2>
         <script>
@@ -37,60 +36,92 @@
                 return Math.floor((Math.random() * (max - min)) + min);
             }
 
-            function vecinas_vacias(matriz, x, y) {
+            function vecinas_vacias(matriz, x, y, j, k) {
 
+                vacias = true;
 
+                if ((j - 1 != x) && (matriz[j - 1][k]) == "*") {
+                    console.log("Entra en false0"+matriz[j - 1][k]);
+                    vacias = false;
+                }
+
+                if (j + 1 != x && (matriz[j + 1][k]) == "*") {
+                    console.log("Entra en false1"+matriz[j + 1][k]);
+                    vacias = false;
+                }
+
+                if ((k - 1 != y) && (matriz[j][k-1] == "*")) {
+                    console.log("Entra en false2"+matriz[j][k - 1]);
+                    vacias = false;
+                }
+
+                if ((k + 1 != y) &&  (matriz[j][k + 1]) == "*") {
+                    console.log("Entra en false3"+matriz[j][k + 1]);
+                    vacias = false;
+                }
+
+                return vacias;
             }
+
+
             function juego(matriz, x, y) {
 
-                n = generateRandomInt(0, 4);
-                console.log(n);
-                console.table(matriz);
-                switch (n) {
-                    case 0:
-                        if (x >= 1 && matriz[x - 1][y] != "*") {
-                            matriz[x - 1][y] = "*";
-                            juego(matriz, x - 1, y);
+                //Comprueba que haya alguna posibilidad
+                if (vecinas_vacias(matriz, x, y, x - 1, y) || vecinas_vacias(matriz, x, y, x + 1, y) || vecinas_vacias(matriz, x, y, x, y - 1) || vecinas_vacias(matriz, x, y, x, y + 1)) {
 
-                        } else {
-                            juego(matriz, x, y);
-                        }
+                    n = generateRandomInt(0, 4);
+                    console.log(n);
+                    console.table(matriz);
+                    switch (n) {
+                        case 0:
+                            if (x >= 1 && matriz[x - 1][y] != "*" && vecinas_vacias(matriz, x, y, x - 1, y)) {
+                                matriz[x - 1][y] = "*";
+                                juego(matriz, x - 1, y);
 
-                        break;
+                            } else {
+                                juego(matriz, x, y);
+                            }
 
-                    case 1:
-                        if (x + 1 < matriz.length && matriz[x + 1][y] != "*") {
-                            matriz[x + 1][y] = "*";
-                            juego(matriz, x + 1, y);
+                            break;
 
-                        } else {
-                            juego(matriz, x, y);
-                        }
+                        case 1:
+                            if (x + 1 < matriz.length && matriz[x + 1][y] != "*" && vecinas_vacias(matriz, x, y, x + 1, y)) {
+                                matriz[x + 1][y] = "*";
+                                juego(matriz, x + 1, y);
 
-                        break;
+                            } else {
+                                juego(matriz, x, y);
+                            }
 
-                    case 2:
-                        if (y >= 1 && matriz[x][y - 1] != "*") {
-                            matriz[x][y - 1] = "*";
-                            juego(matriz, x, y - 1);
+                            break;
 
-                        } else {
-                            juego(matriz, x, y);
-                        }
+                        case 2:
+                            if (y >= 1 && matriz[x][y - 1] != "*" && vecinas_vacias(matriz, x, y, x, y - 1)) {
+                                matriz[x][y - 1] = "*";
+                                juego(matriz, x, y - 1);
 
-                        break;
+                            } else {
+                                juego(matriz, x, y);
+                            }
 
-                    default:
-                        if (y + 1 < matriz[0].length && matriz[x][y + 1] != "*") {
-                            matriz[x][y + 1] = "*";
-                            juego(matriz, x, y + 1);
+                            break;
 
-                        } else {
-                            juego(matriz, x, y);
-                        }
+                        default:
+                            if (y + 1 < matriz[0].length && matriz[x][y + 1] != "*" && vecinas_vacias(matriz, x, y, x, y + 1)) {
+                                matriz[x][y + 1] = "*";
+                                juego(matriz, x, y + 1);
 
-                        break;
+                            } else {
+                                juego(matriz, x, y);
+                            }
+
+                            break;
+                    }
+                } else {
+                    console.log("SE JODIO");
+                    stop;
                 }
+
 
             }
             juego(arr, 4, 6);
