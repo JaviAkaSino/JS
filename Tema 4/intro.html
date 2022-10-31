@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="miBoton" onclick="dale()">Dale</button>
+
+    <script>
+        const dale=()=>{
+            //Creamos el elemento p
+            var parrafo = document.createElement("p");
+            //Creamos el nodo de texto
+            var contenido = document.createTextNode("Nodo de texto");
+            //Enlazamos el texto con el p
+            parrafo.appendChild(contenido);
+            //Enlazamos el parrafo al body
+            document.body.appendChild(parrafo);
+
+            //Borramos el botón
+            let btn = document.getElementById("miBoton");
+            btn.parentNode.removeChild(btn);
+        }
+    </script>
+</body>
+</html>
