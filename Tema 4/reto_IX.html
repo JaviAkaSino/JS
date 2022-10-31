@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Retos JavaScript</title>
+  </head>
+  <body>
+    <h1>Reto IX - Javier Parodi</h1>
+    <ul id="carrakos"> </ul>
+
+    <script>
+
+let carrakos = ["Chevrolet", "Tesla", "BMW",["Honda", "Infiniti",["Lexus", "Mercedes", "Kia"], "Hyunday"],["Mazda", "Mercedes", "Jeep",["KTM", "Nissan", "Isuzu"]]];
+let xungos = [{nombre:"Bruce Lee",carros:["Chevrolet", "Tesla", "BMW"]},{nombre:"YakiChan",carros:["Lexus", "Mercedes", "Kia"]}]
+
+function lista_arrays(arr, lista) {
+
+            arr.map(a => {
+
+                if (!Array.isArray(a)) {
+
+                    let li = document.createElement("li");
+
+                    xungos.map(x => {
+                        if (x.carros.find(c => c == a) != undefined) 
+                        a += " de " + x.nombre;
+                    });
+                    
+                    let contenido = document.createTextNode(a);
+                    li.appendChild(contenido);
+                    lista.appendChild(li);
+
+                } else {
+
+                    let ul = document.createElement("ul");
+                    lista.appendChild(ul);
+                    lista_arrays(a, ul);
+                }
+            })
+
+        }
+
+
+        var lista = document.getElementById("carrakos");
+
+        lista_arrays(carrakos, lista);
+
+
+
+    </script>
+  </body>
+</html>

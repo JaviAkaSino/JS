@@ -37,31 +37,57 @@
                 return Math.floor((Math.random() * (max - min)) + min);
             }
 
-            function vecinas_vacias(matriz, x, y){
+            function vecinas_vacias(matriz, x, y) {
 
-                
+
             }
             function juego(matriz, x, y) {
 
-                n = generateRandomInt(0, 3);
+                n = generateRandomInt(0, 4);
+                console.log(n);
+                console.table(matriz);
                 switch (n) {
                     case 0:
-                        if (x >= 1 && matriz[x - 1][y]!="*" && ) {
+                        if (x >= 1 && matriz[x - 1][y] != "*") {
                             matriz[x - 1][y] = "*";
-                            juego(matriz, [x - 1], [y]);
+                            juego(matriz, x - 1, y);
+
+                        } else {
+                            juego(matriz, x, y);
                         }
 
                         break;
 
-                    case 1: arguments
+                    case 1:
+                        if (x + 1 < matriz.length && matriz[x + 1][y] != "*") {
+                            matriz[x + 1][y] = "*";
+                            juego(matriz, x + 1, y);
+
+                        } else {
+                            juego(matriz, x, y);
+                        }
 
                         break;
 
-                    case 2: arguments
+                    case 2:
+                        if (y >= 1 && matriz[x][y - 1] != "*") {
+                            matriz[x][y - 1] = "*";
+                            juego(matriz, x, y - 1);
+
+                        } else {
+                            juego(matriz, x, y);
+                        }
 
                         break;
 
-                    default: arguments
+                    default:
+                        if (y + 1 < matriz[0].length && matriz[x][y + 1] != "*") {
+                            matriz[x][y + 1] = "*";
+                            juego(matriz, x, y + 1);
+
+                        } else {
+                            juego(matriz, x, y);
+                        }
 
                         break;
                 }
