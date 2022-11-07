@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Retos X - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>Reyes Godos - Buscaman</h1>
+    <script>
+        var vikings = '{"vikingos":[{"reino":"Noruega","reyes":["Hakon","Harald","Ivar","Olaf","Bjorn","Ragnar"]},{"reino":"Dinamarca","reyes":["Frodo","Hamming","Angantyr","Horik"]}]}';
+        // skriv inn koden din her. Vær forsiktig med at json-en jukser. Det er ikke en matrise, men et objekt.
+
+        var es_rey = nombre => {
+
+            let es_rey = false;
+
+            let lista = JSON.parse(vikings).vikingos;
+
+            lista.map(x => {
+
+                if (x.reyes.find(r => r == nombre) != undefined)
+                    es_rey = true;
+            });
+
+            return es_rey;
+        }
+        console.log("¿Es Hakon un rey?");
+        es_rey("Hakon") ? console.log("Sí") : console.log("No");
+        console.log("¿Es Pepe un rey?");
+        es_rey("Pepe") ? console.log("Sí") : console.log("No");
+
+    </script>
+</body>
+
+</html>
