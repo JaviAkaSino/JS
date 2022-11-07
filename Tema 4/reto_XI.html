@@ -11,59 +11,44 @@
     <script>
         var vikings = '{"vikingos":[{"reino":"Noruega","reyes":["Hakon","Harald",["Ivar",["Olaf","Lars","Lasse"],"Bjorn"],"Ragnar"]},{"reino":"Dinamarca","reyes":["Frodo","Hamming",["Angantyr","Sarunas"],"Horik"]}]}';        // skriv inn koden din her. Vær forsiktig med at json-en jukser. Det er ikke en matrise, men et objekt.
 
+        var lista_recursiva = (lista_total, lista) => {
+
+            lista_total.map(x => {
+
+                if (!Array.isArray(x))
+                    lista.push(x);
+
+                else
+                    lista_recursiva(x, lista);
+            })
+
+            return lista;
+        }
+
         var es_rey = (nombre) => {
 
             let es_rey = false;
 
-            let lista = JSON.parse(vikings).vikingos;
+            let lista_vikingos = JSON.parse(vikings).vikingos; //Pasamos JSON a lista
 
-            lista.map(x => {
-                //console.log(busca_lista_recursiva(x.reyes, nombre));
-                if (busca_lista_recursiva(x.reyes, nombre))
+            lista_vikingos.map(x => {
+
+                let reyes = [];
+                reyes = lista_recursiva(x.reyes, reyes) //Guarda en un array unidimensional
+
+                if (reyes.find(r => r == nombre))
                     es_rey = true;
             });
 
             return es_rey;
         }
 
-        var busca_lista_recursiva = (lista, texto) => {
-            
-            var esta = false;
-
-            lista.map(x => {
-
-                if (!Array.isArray(x)) { //Si no es un array
-                    if (x == texto) { //Y es igual al  texto
-                        console.log("Sí");
-                        esta = true;
-                        return esta;
-                    }
-                } else {
-                    busca_lista_recursiva(x, texto);
-                }
-            })
-
-            return esta;
-        }
-
-        var es_rey_flat = nombre => {
-
-            let es_rey = false;
-
-            let lista = JSON.parse(vikings).vikingos;
-
-            lista.map(x => {
-
-                if (x.reyes.flat(Infinity).find(r => r == nombre) != undefined)
-                    es_rey = true;
-            });
-
-            return es_rey;
-        }
         console.log("¿Es Olaf un rey?");
         es_rey("Olaf") ? console.log("Sí") : console.log("No");
         console.log("¿Es Pepe un rey?");
         es_rey("Pepe") ? console.log("Sí") : console.log("No");
+        console.log("¿Es Bjorn un rey?");
+        es_rey("Bjorn") ? console.log("Sí") : console.log("No");
 
     </script>
 </body>
