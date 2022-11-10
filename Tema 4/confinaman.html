@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confinaman - Javier Parodi</title>
+</head>
+
+<body>
+    <ol id="lista1">
+        <li>Perico</li>
+        <li>Juanico</li>
+        <ul>
+            <li>Jose</li>
+            <ul>
+                <li>Roman</li>
+                <li>Marco</li>
+                <li>Rodrigo</li>
+            </ul>
+            <li>Jose</li>
+            <li>Lorenzo</li>
+            <ul>
+                <li>Dimas</li>
+                <li>Gestas</li>
+                <li>Malakatos</li>
+                <li>Jose</li>
+            </ul>
+        </ul>
+        <li>Sofoclis</li>
+    </ol>
+
+    <ol id="lista2">
+        <li>Periquin</li>
+        <li>Juanele</li>
+        <li>Jose</li>
+    </ol>
+
+    <script>
+        const recorrer = (obj) => {
+            if (obj.tagName == "LI") { // Pregunta si es un li
+                console.log(obj.innerHTML);
+            } else {
+                Array.from(obj.children).map(e => recorrer(e))
+            }
+        }
+
+        const confinamiento = (positivos) => {
+            if (positivos.tagName == "LI")  // Pregunta si es un li
+                infectar(document.getElementById("lista1"), positivos.innerHTML);
+
+            else
+                Array.from(positivos.children).map(e => confinamiento(e));
+        }
+
+        const infectar = (obj, nombre) => {
+
+            if (obj.tagName == "LI") { // Pregunta si es un li
+
+                if (obj.innerHTML == nombre) // Y coincide con el nombre
+                    Array.from(obj.parentNode.children).map(n => { //Recorre el nodo entero
+                        if (n.tagName == "LI") //Y a los que sean li
+                            n.innerHTML += "(C)"; //Les añade la C
+                    });
+
+
+            } else { //Si no en un li, sigue con los hijos
+                Array.from(obj.children).map(e => infectar(e, nombre))
+            }
+        }
+
+        confinamiento(document.getElementById("lista2"));
+
+    </script>
+</body>
+
+</html>
