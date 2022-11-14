@@ -20,47 +20,37 @@
         console.log("En la posición 2,4 hay una trinchera de " + maullo(2, 4) + " posiciones");
         console.log("En la posición 3,0 hay una trinchera de " + maullo(3, 0) + " posiciones");
 
+        var copia = JSON.parse(JSON.stringify(croquis));
+
         function maullo(x, y) {
 
             var suma = 0;
-            
+
             //Si no hay X la trinchera es de 0
-            if (croquis[x][y] == "") {
-                return suma;
+            if (copia[x][y] == "X") {
+                copia[x][y] = "";
+                suma++;
+            } else {
+                return 0;
             }
 
-            //Mientras haya alguna posibilidad (alguna casilla que tenga alguna vecina no vacia)
-            if (!vecinas_vacias(x, y, x - 1, y) || !vecinas_vacias(x, y, x + 1, y)
-                || !vecinas_vacias(x, y, x, y - 1 || !vecinas_vacias(x, y, x, y + 1))) {
 
-
-                if (x > 0 && croquis[x - 1][y] == "X") { //Mira arriba
-                    suma++;
-                    suma += maullo(x - 1, y);
-                    return suma;
-                }
-
-                if (x < maxx - 1 && croquis[x + 1][y] == "X") { //Mira abajo
-                    //suma += maullo(x + 1, y);
-                    suma++;
-
-                    console.log(x);
-                    return suma ;
-                }
-
-                if (y > 0 && croquis[x][y - 1] == "X") { //Mira izquierda
-                    suma++;
-                    suma += maullo(x, y - 1);
-                }
-
-                if (y < maxy - 1 && croquis[x][y + 1] == "X") { //Mira derecha
-                    suma++;
-                    suma += maullo(x, y + 1);
-                }
-
-
-
+            if (x > 0 && copia[x - 1][y] == "X") { //Mira arriba
+                suma += maullo(x - 1, y);
             }
+
+            if (x < maxx - 1 && copia[x + 1][y] == "X") { //Mira abajo
+                suma += maullo(x + 1, y);
+            }
+
+            if (y > 0 && copia[x][y - 1] == "X") { //Mira izquierda
+                suma += maullo(x, y - 1);
+            }
+
+            if (y < maxy - 1 && copia[x][y + 1] == "X") { //Mira derecha
+                suma += maullo(x, y + 1);
+            }
+
 
             return suma;
 
@@ -68,31 +58,6 @@
 
 
 
-
-
-        function vecinas_vacias(i, j, x, y) {
-
-            vacias = true;
-
-            //Mira las vecinas excepto la posicion de la que viene
-            if (x < 0 || y < 0 || x > maxx - 1 || y > maxy - 1)
-                return vacias; //Si se salen, no se mira mas
-
-            if (x > 0 && x - 1 != i && croquis[x - 1][y] == "X") { //Mira arriba
-                vacias = false;
-            }
-            if (x + 1 != i && croquis[x + 1][y] == "X") { //Mira abajo
-                vacias = false;
-            }
-            if (y - 1 != j && croquis[x][y - 1] == "X") { //Mira izquierda
-                vacias = false;
-            }
-            if (y + 1 != j && croquis[x][y + 1] == "X") { //Mira derecha
-                vacias = false;
-            }
-
-            return vacias;
-        }
     </script>
 </body>
 

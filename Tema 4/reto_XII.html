@@ -19,6 +19,9 @@
 
         if (!Array.isArray(a)) {
 
+          let lista_xungos = xungos.reduce(acc, x => acc = acc.concat(x.carros));
+          console.log(lista_xungos);
+
           xungos.map(x => {
             if (x.carros.find(c => c == a) != undefined ){
 
