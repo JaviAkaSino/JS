@@ -19,19 +19,20 @@
 
         if (!Array.isArray(a)) {
 
-          let lista_xungos = xungos.reduce(acc, x => acc = acc.concat(x.carros));
-          console.log(lista_xungos);
-
           xungos.map(x => {
-            if (x.carros.find(c => c == a) != undefined ){
 
-              let obj = {nombre: a, propietario: x.nombre};
-              lista.push(obj);
+            let obj = { nombre: a }; //Crea objeto con el nombre
 
-            } else {
-              let obj = {nombre: a, propietario: "nadie"};
-              lista.push(obj);
+            if (x.carros.find(c => c == a) != undefined) { //Si alguien lo lleva
+              obj.propietario = x.nombre; //Añade el propietario
+
+            } else { // Si ni, lo crea con nadie
+              obj.propietario = "nadie";
             }
+
+
+           // if (lista.find(l => l.nombre == a) == undefined) //Si no está ya en la lista
+              lista.push(obj); //Lo añade
             
           });
 

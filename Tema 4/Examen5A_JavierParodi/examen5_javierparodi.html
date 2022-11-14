@@ -14,13 +14,20 @@
         const maxx = croquis.length;
         const maxy = croquis[0].length;
 
+        var copia = JSON.parse(JSON.stringify(croquis));
+        console.table(copia);
+
         console.log("En la posición 0,0 hay una trinchera de " + maullo(0, 0) + " posiciones");
+        copia = JSON.parse(JSON.stringify(croquis));
         console.log("En la posición 0,1 hay una trinchera de " + maullo(0, 1) + " posiciones");
+        copia = JSON.parse(JSON.stringify(croquis));
         console.log("En la posición 0,4 hay una trinchera de " + maullo(0, 4) + " posiciones");
+        copia = JSON.parse(JSON.stringify(croquis));
         console.log("En la posición 2,4 hay una trinchera de " + maullo(2, 4) + " posiciones");
+        copia = JSON.parse(JSON.stringify(croquis));
         console.log("En la posición 3,0 hay una trinchera de " + maullo(3, 0) + " posiciones");
 
-        var copia = JSON.parse(JSON.stringify(croquis));
+
 
         function maullo(x, y) {
 

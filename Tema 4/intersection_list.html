@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>INTERSECTION LIST</title>
+</head>
+
+<body>
+    PRIMERA LISTA:
+    <ul id="lista1">
+        <li>manzana</li>
+        <li>pera</li>
+        <ul>
+            <li>conferencia</li>
+            <ul>
+                <li>conferenciaverde</li>
+                <li>conferenciaamarilla</li>
+                <li>conferenciaroja</li>
+            </ul>
+            <li>peradeagua</li>
+            <li>peritadulce</li>
+            <ul>
+                <li>Dimas</li>
+                <li>Gestas</li>
+
+                <li>Malakatos</li>
+                <li>Jose</li>
+            </ul>
+        </ul>
+        <li>limon</li>
+        <li>limon</li>
+        <li>LIMON</li>
+    </ul>
+    Segunda lista:
+    <ul id="lista2">
+        <li>manzana</li>
+        <li>manzana</li>
+        <li>manzana</li>
+        <li>manzana</li>
+        <li>pera</li>
+        <li>limon</li>
+    </ul>
+
+    <script>
+
+
+        list_to_array = (obj, lista) => {
+
+            if (obj.tagName == "LI") {
+                lista.push(obj.innerHTML.toUpperCase());
+            } else {
+                Array.from(obj.children).map(c => list_to_array(c, lista));
+            }
+
+        }
+
+        elimina_repetidos = (lista) => {
+
+            lista.map(x => {//Para cada elemento
+                //Busca desde la siguiente posicion
+                lista.slice(lista.indexOf(x) + 1, lista.length - 1).map(y => {
+                    if (y == x) //Si encuentra otro igual
+                        lista.splice(lista.indexOf(x), 1); //Lo elimina del array
+                })
+            })
+
+        }
+
+        interseccion = (lista1, lista2, lista_comun) => {
+
+            lista2.map(d => { //para cada elemento de la lista 2
+
+                if (lista1.find(u => u == d) != undefined) { //Si está en la 1
+                    lista_comun.push(d);
+                }
+            })
+        }
+
+        //Creamos arrays para las dos listas
+
+        var lista1 = [];
+        var lista2 = [];
+        var lista_comun = [];
+
+        list_to_array(document.getElementById("lista1"), lista1);
+        list_to_array(document.getElementById("lista2"), lista2);
+
+        interseccion(lista1, lista2, lista_comun);
+
+        elimina_repetidos(lista_comun);
+
+        console.log(lista_comun.sort());
+
+
+
+    </script>
+</body>
+
+</html>
