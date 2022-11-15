@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Examen 6B - Javier Parodi Piñero</title>
+</head>
+
+<body>
+    <div id="busca">
+        <p>Texto normal.<sub>subindice</sub> T<sup>2</sup>
+        </p>
+        <p>Texto normal.<sup>Texto superíndice.</sup></p>
+        <p>Ecuación:X<sup>2</sup>+3X+1</p>
+        <p>2<sup>2</sup>*2<sup>2</sup>=2<sup>2+2</sup></p>
+    </div>
+
+    <script>
+
+        cuadrado_a_cubo = (obj) => {
+
+            if (obj.tagName == "SUP") {
+
+                if (obj.innerHTML == 2)
+                    obj.innerHTML = 3;
+            }
+
+            else {
+
+                Array.from(obj.children).map(o => cuadrado_a_cubo(o));
+            }
+        }
+
+        cuadrado_a_cubo(document.getElementById("busca"));
+
+    </script>
+</body>
+
+</html>
