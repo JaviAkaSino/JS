@@ -19,36 +19,34 @@
 
         if (!Array.isArray(a)) {
 
-          xungos.map(x => {
+          xungos.map(x => { //Recorre xungos
 
-            let obj = { nombre: a }; //Crea objeto con el nombre
+            let obj = { nombre: a }; //Crea un objeto con el nombre de la marca
 
             if (x.carros.find(c => c == a) != undefined) { //Si alguien lo lleva
               obj.propietario = x.nombre; //Añade el propietario
 
-            } else { // Si ni, lo crea con nadie
-              obj.propietario = "nadie";
+              lista.push(obj); //Añade el objeto a la lista
             }
 
-
-           // if (lista.find(l => l.nombre == a) == undefined) //Si no está ya en la lista
-              lista.push(obj); //Lo añade
-            
           });
+          //Para los que no tienen propietario
+          if (lista.find(l => l.nombre == a) == undefined) { //Si no está ya en la lista
+
+            let obj = { nombre: a, propietario: "nadie" }; //Crea objeto con "nadie"
+            lista.push(obj); //Lo añade a la lista
+          }
 
         } else {
 
           lista_arrays(a, lista);
         }
-
       })
     }
 
     var lista = [];
     lista_arrays(carrakos, lista);
     console.log(lista);
-
-
 
   </script>
 </body>
