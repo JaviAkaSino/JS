@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>RECURSIVIDAD</title>
+</head>
+
+<body>
+    <p>let array = [1,2,3,4];
+        Array.isArray(array); // true
+    </p>
+    <script>
+        let numeros = [1, [2, 3, 4], [8, 15, [5, 1]], 27];
+        console.log(numeros)
+        // ESCRIBE TU CÓDIGO AQUÍ
+        const SumInMulti = (array) => {
+            let suma = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (Array.isArray(array[i])) {
+                    suma += SumInMulti(array[i])
+                } else {
+                    suma += array[i]
+                }
+            }
+            return suma;
+        }
+    </script>
+</body>
+
+</html>

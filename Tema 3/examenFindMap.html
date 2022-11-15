@@ -51,7 +51,7 @@
             objeto.veces = buddies.filter(v => v.car == e.car).length; //buddies.map(v => v.car).filter(v => v == objeto.marca).length;
             return objeto;
         });
-        //console.log(coches);
+
         coches = coches.filter(e => e.veces > 1).map(v => {
 
             if (trendy.find(f => f == v.marca) == undefined)
@@ -78,9 +78,8 @@
         por consola. Puede aparecer alguna marca repetida (no importa). Realiza este programa en
         una línea de código.*/
         console.log("EJERCICIO 3");
-        newcars = newcars.flat(Infinity);
         buddies.map(b => {
-            if (xungas.filter(x => x == b.car).length == 0 && newcars.filter(n => n == b.car).length > 0) {
+            if (xungas.filter(x => x == b.car).length == 0 && newcars.flat(Infinity).filter(n => n == b.car).length > 0) {
                 console.log(b.car);
             }
         })
@@ -90,10 +89,10 @@
         preferida). Realiza este programa en 2 líneas de código.*/
         console.log("EJERCICIO 4");
         let maximo = 0;
-        let marca="";
+        let marca = "";
         buddies.map(b => {
             let veces = buddies.filter(x => x.car == b.car).length;
-            if (veces > maximo){
+            if (veces > maximo) {
                 marca = b.car;
                 maximo = veces;
             }
