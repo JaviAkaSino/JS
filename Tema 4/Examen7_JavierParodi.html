@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exámen 7 - Javier Parodi Piñero</title>
+</head>
+
+<body>
+    <h1>UNION-LIST</h1>
+    <h2>Lista 1</h2>
+    <ul id="lista1">
+        <li>manzana</li>
+        <li>pera</li>
+        <ul>
+            <li>conferencia</li>
+            <ul>
+                <li>conferenciaverde</li>
+                <li>conferenciaamarilla</li>
+                <li>conferenciaroja</li>
+            </ul>
+
+            <li>peradeagua</li>
+            <li>peritadulce</li>
+            <ul>
+                <li>Dimas</li>
+                <li>Gestas</li>
+                <li>Malakatos</li>
+                <li>Jose</li>
+            </ul>
+        </ul>
+
+        <li>limon</li>
+        <li>limon</li>
+        <li>LIMON</li>
+    </ul>
+
+    <h2>Lista 2</h2>
+
+    <ul id="lista2">
+        <li>manzana</li>
+        <li>manzana</li>
+        <ul>
+            <li>manzana</li>
+            <li>manzana</li>
+        </ul>
+        <li>pera</li>
+        <li>limon</li>
+    </ul>
+
+    <script>
+        lista_a_array = (obj, array) => {
+
+            if (obj.tagName == "LI") {
+                array.push(obj.innerText.toUpperCase());
+
+            } else {
+                Array.from(obj.children).map(a => lista_a_array(a, array));
+            }
+        }
+
+        union_arrays = (array1, array2) => {
+
+            let union = array1.concat(array2).sort();
+            let final = [];
+
+            for (let i = 0; i < union.length; i++) {
+
+                if (final.find(a => a == union[i]) == undefined) {
+                    final.push(union[i]);
+                }
+            }
+            return final;
+        }
+
+        var lista1 = [];
+        var lista2 = [];
+
+        lista_a_array(document.getElementById("lista1"), lista1);
+        //console.log(lista1);
+        lista_a_array(document.getElementById("lista2"), lista2);
+        //console.log(lista2);
+
+        var union = union_arrays(lista1, lista2);
+        console.log("Unión de las dos listas:");
+        union.map(u => console.log(u));
+    </script>
+</body>
+
+</html>
