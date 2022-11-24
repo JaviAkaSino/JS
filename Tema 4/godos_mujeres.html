@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mujeres Godas - Javier Parodi</title>
+</head>
+
+<body>
+    <h1>Reyes Godos - Mujer Guerrera</h1>
+    <ul id="lista"></ul>
+    <script>
+        var godosJSON = '{"reyesgodos":[{"nombre":"Recesvinto","rey":"NO"},{"nombre":"Atanagildo", "rey": "SI"}, [{ "nombre": "Suintila", "rey": "NO" }, {"nombre": "Recesvinto","rey":"NO"}],{"nombre":"Suintila","rey":"SI"},[{"nombre":"Leovigildo","rey":"NO"},{"nombre":"Sisebuto","rey":"SI"},{"nombre":"Wamba","rey":"SI"},{"nombre":"Godofredo","rey":"NO"}]]} ';
+
+        var mujeresJSON =
+            '[{"hombre":"Recesvinto","mujer":"Lantanida"},{"hombre":"Suintila","mujer":"Clorotea"},{"hombre":"Atanagildo","mujer":"Cadmia"},{"hombre":"Recaredo","mujer":"Lantanida"}]';
+
+        //Flat infinity
+        godos_to_array = (obj, arr) => {
+
+            if (!Array.isArray(obj)) {
+                arr.push(obj);
+            } else {
+                obj.map(o => godos_to_array(o, arr));
+            }
+        }
+
+        //Creamos los arrays de los json
+        var godos = [];
+        var mujeres = [];
+
+        godos_to_array(JSON.parse(godosJSON).reyesgodos, godos);
+        console.log(godos);
+        godos_to_array(JSON.parse(mujeresJSON), mujeres);
+        console.log(mujeres);
+
+        //Filtramos a los reyes
+        var reyes = godos.filter(g => g.rey == "SI");
+        console.log(reyes);
+
+        //Filtramos con mujer
+        var reyes_mujer = mujeres.filter(m => reyes.find(r => r.nombre == m.hombre) != undefined);
+        console.log(reyes_mujer);
+
+        //Escribimos en la ul
+        var ul = document.getElementById("lista");
+        reyes_mujer.map(x => {
+            let txt = document.createTextNode("Rey " + x.hombre + " - Guerrera " + x.mujer);
+            let li = document.createElement("LI");
+            li.appendChild(txt);
+            ul.appendChild(li);
+        })
+
+
+    </script>
+</body>
+
+</html>
